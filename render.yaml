@@ -2,13 +2,18 @@ services:
   - type: web
     name: luxe-barber-studio
     runtime: static
-    buildCommand: echo "No build needed"
+    buildCommand: echo "ok"
     staticPublishPath: .
     headers:
       - path: /*
         name: Cache-Control
         value: no-cache
     routes:
-      - type: rewrite
+      - type: redirect
         source: /admin
         destination: /admin/login.html
+        permanent: false
+      - type: redirect
+        source: /admin/
+        destination: /admin/login.html
+        permanent: false
